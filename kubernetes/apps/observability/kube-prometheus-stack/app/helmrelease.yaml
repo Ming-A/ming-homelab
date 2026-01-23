@@ -11,26 +11,26 @@ spec:
   interval: 1h
   values:
     cleanPrometheusOperatorObjectNames: true
-#    alertmanager:
-#      route:
-#        main:
-#          enabled: true
-#          hostnames:
-#            - alertmanager.local.mingsoonang.com
-#          parentRefs:
-#            - name: envoy-internal
-#              namespace: network
-#      alertmanagerSpec:
-#        alertmanagerConfiguration:
-#          name: alertmanager
-#        externalUrl: https://alertmanager.local.mingsoonang.com
-#        storage:
-#          volumeClaimTemplate:
-#            spec:
-#              storageClassName: ceph-block
-#              resources:
-#                requests:
-#                  storage: 1Gi
+    alertmanager:
+      route:
+        main:
+          enabled: true
+          hostnames:
+            - alertmanager.local.mingsoonang.com
+          parentRefs:
+            - name: envoy-internal
+              namespace: network
+      alertmanagerSpec:
+        alertmanagerConfiguration:
+          name: alertmanager
+        externalUrl: https://alertmanager.local.mingsoonang.com
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: ceph-block
+              resources:
+                requests:
+                  storage: 1Gi
     kubeEtcd:
       service:
         selector:
