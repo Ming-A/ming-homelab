@@ -47,7 +47,7 @@ spec:
             - name: envoy-internal
               namespace: network
       prometheusSpec:
-        externalUrl: https://prometheus.local.mingsoonang.com
+        externalUrl: https://prometheus.mingsoonang.com
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         ruleSelectorNilUsesHelmValues: false
