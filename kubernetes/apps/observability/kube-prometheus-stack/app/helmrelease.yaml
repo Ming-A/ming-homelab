@@ -16,14 +16,14 @@ spec:
         main:
           enabled: true
           hostnames:
-            - alertmanager.local.mingsoonang.com
+            - alertmanager.mingsoonang.com
           parentRefs:
             - name: envoy-internal
               namespace: network
       alertmanagerSpec:
         alertmanagerConfiguration:
           name: alertmanager
-        externalUrl: https://alertmanager.local.mingsoonang.com
+        externalUrl: https://alertmanager.mingsoonang.com
         storage:
           volumeClaimTemplate:
             spec:
@@ -42,7 +42,7 @@ spec:
         main:
           enabled: true
           hostnames:
-            - prometheus.local.mingsoonang.com
+            - prometheus.mingsoonang.com
           parentRefs:
             - name: envoy-internal
               namespace: network
