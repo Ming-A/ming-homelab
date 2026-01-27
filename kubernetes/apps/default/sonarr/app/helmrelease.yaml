@@ -85,7 +85,7 @@ spec:
       media:
         type: nfs
         server: expanse.internal
-        path: /mnt/volume1/kubernetes-storage
+        path: /mnt/volume1/media-storage
         globalMounts:
           - path: /media
       tmp:
