@@ -94,7 +94,7 @@ spec:
             subPath: repository.config
       repository:
         type: nfs
-        server: expanse.internal
+        server: 10.69.15.3
         path: /volume1/kubernetes-storage
         globalMounts:
           - path: /repository

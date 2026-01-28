@@ -84,7 +84,7 @@ spec:
           - readOnly: true
       media:
         type: nfs
-        server: expanse.internal
+        server: 10.69.15.3
         path: /mnt/volume1/media-storage
         globalMounts:
           - path: /media
