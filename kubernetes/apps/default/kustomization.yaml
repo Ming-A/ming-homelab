@@ -11,4 +11,5 @@ resources:
   - ./namespace.yaml
   - ./echo/ks.yaml
   - ./sonarr/ks.yaml
+  - ./obsidian-couchdb/ks.yaml
 
