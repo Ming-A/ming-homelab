@@ -12,4 +12,5 @@ resources:
   - ./echo/ks.yaml
   - ./sonarr/ks.yaml
   - ./obsidian-couchdb/ks.yaml
+  - ./jackett/ks.yaml
 
