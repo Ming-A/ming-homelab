@@ -21,9 +21,9 @@ spec:
             env:
               PORT: &port 9117
               TZ: Asia/Kuala_Lumpur
-            envFrom:
-              - secretRef:
-                  name: "{{ .Release.Name }}-secret"
+            #envFrom:
+             # - secretRef:
+              #    name: "{{ .Release.Name }}-secret"
             probes:
               liveness: &probes
                 enabled: true
