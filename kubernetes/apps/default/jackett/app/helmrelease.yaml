@@ -17,7 +17,7 @@ spec:
           app:
             image:
               repository: ghcr.io/home-operations/jackett
-              tag: v0.24.1089@sha256-67250eb85876a58cf2c01dc9bcef7ac095c9f6fa08d97f6b44ad99a878c84011
+              tag: 0.24.1089@sha256:67250eb85876a58cf2c01dc9bcef7ac095c9f6fa08d97f6b44ad99a878c84011
             env:
               PORT: &port 9117
               TZ: Asia/Kuala_Lumpur
