@@ -68,11 +68,5 @@ spec:
     persistence:
       config:
         existingClaim: "{{ .Release.Name }}"
-      scripts:
-        type: configMap
-        name: jackett-configmap
-        defaultMode: 0775
-        globalMounts:
-          - readOnly: true
       tmp:
         type: emptyDir
