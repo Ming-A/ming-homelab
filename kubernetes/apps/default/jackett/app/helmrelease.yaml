@@ -19,6 +19,7 @@ spec:
               repository: ghcr.io/home-operations/jackett
               tag: v0.24.1089
             env:
+              PORT: &port 9117
               TZ: Asia/Kuala_Lumpur
             envFrom:
               - secretRef:
