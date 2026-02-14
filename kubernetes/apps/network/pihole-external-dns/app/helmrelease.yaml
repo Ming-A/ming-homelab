@@ -12,9 +12,9 @@ spec:
   driftDetection:
     ignore:
       - paths: [/spec/replicas]
-  dependsOn:
-    - name: pihole
-      namespace: network
+#  dependsOn:
+#    - name: pihole
+#      namespace: network
   values:
     fullnameOverride: *app
     provider:
@@ -27,7 +27,7 @@ spec:
             key: *name
     extraArgs:
       - --pihole-api-version=6
-      - --pihole-server=http://pihole-0.pihole.network.svc.cluster.local
+      - --pihole-server=10.69.10.6
       - --annotation-filter=externaldns.enable.custom/internal notin (false,no)
     triggerLoopOnEvent: true
     policy: sync
