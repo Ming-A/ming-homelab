@@ -29,6 +29,7 @@ spec:
       - --pihole-api-version=6
       - --pihole-server=https://10.69.10.6
       - --annotation-filter=externaldns.enable.custom/internal notin (false,no)
+      - --pihole-tls-insecure-skip-verify=true
     triggerLoopOnEvent: true
     policy: sync
     sources:
