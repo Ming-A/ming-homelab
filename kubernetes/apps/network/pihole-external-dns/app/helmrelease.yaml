@@ -28,7 +28,7 @@ spec:
     extraArgs:
       - --pihole-api-version=6
       - --pihole-server=https://10.69.10.6
-      - --pihole-tls-skip-verify=true
+      - --pihole-tls-skip-verify
       - --annotation-filter=externaldns.enable.custom/internal notin (false,no)
     triggerLoopOnEvent: true
     policy: sync
