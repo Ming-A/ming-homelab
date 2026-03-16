@@ -21,6 +21,9 @@ spec:
               tag: stable
             env:
               TZ: Asia/Kuala_Lumpur
+            envFrom:
+              - secretRef:
+                  name: frigate-secret
             probes:
               liveness: &probes
                 enabled: true
