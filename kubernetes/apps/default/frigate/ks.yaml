@@ -15,4 +15,7 @@ spec:
     name: flux-system
     namespace: flux-system
   targetNamespace: default
+  postBuild:
+    substitute:
+      APP: frigate
   wait: false
