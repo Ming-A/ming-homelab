@@ -21,49 +21,49 @@ data:
       carport-front:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:REDACTED@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
               roles:
                 - detect
                 - record
       garden:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:REDACTED@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
               roles:
                 - detect
                 - record
       left:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:REDACTED@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
               roles:
                 - detect
                 - record
       right:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:REDACTED@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
               roles:
                 - detect
                 - record
       back:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:REDACTED@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
               roles:
                 - detect
                 - record
       foyer:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:REDACTED@REDACTED_CAM:554/stream1
+            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/stream1
               roles:
                 - detect
                 - record
       kitchen:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:REDACTED@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
               roles:
                 - detect
                 - record
