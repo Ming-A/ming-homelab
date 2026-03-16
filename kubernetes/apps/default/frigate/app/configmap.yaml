@@ -21,49 +21,49 @@ data:
       carport-front:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: "{FRIGATE_RTSP_CARPORT_FRONT}"
               roles:
                 - detect
                 - record
       garden:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: "{FRIGATE_RTSP_GARDEN}"
               roles:
                 - detect
                 - record
       left:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: "{FRIGATE_RTSP_LEFT}"
               roles:
                 - detect
                 - record
       right:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: "{FRIGATE_RTSP_RIGHT}"
               roles:
                 - detect
                 - record
       back:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: "{FRIGATE_RTSP_BACK}"
               roles:
                 - detect
                 - record
       foyer:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/stream1
+            - path: "{FRIGATE_RTSP_FOYER}"
               roles:
                 - detect
                 - record
       kitchen:
         ffmpeg:
           inputs:
-            - path: rtsp://REDACTED_USER:{FRIGATE_RTSP_PASSWORD}@REDACTED_CAM:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1
+            - path: "{FRIGATE_RTSP_KITCHEN}"
               roles:
                 - detect
                 - record
