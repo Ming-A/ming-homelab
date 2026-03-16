@@ -9,6 +9,8 @@ data:
       enabled: true
       host: 10.69.40.4
       port: 1883
+      user: "{FRIGATE_MQTT_USER}"
+      password: "{FRIGATE_MQTT_PASSWORD}"
 
     detectors:
       coral:
