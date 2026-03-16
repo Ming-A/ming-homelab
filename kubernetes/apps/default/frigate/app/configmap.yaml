@@ -72,7 +72,6 @@ data:
       enabled: true
       retain:
         days: 7
-        mode: motion
 
     snapshots:
       enabled: true
