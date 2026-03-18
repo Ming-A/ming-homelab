@@ -29,9 +29,11 @@ spec:
                 enabled: true
                 custom: true
                 spec:
-                  httpGet:
-                    path: /
-                    port: *port
+                  exec:
+                    command:
+                      - /bin/sh
+                      - -c
+                      - wget -qO- http://localhost:9117/ > /dev/null
                   initialDelaySeconds: 30
                   periodSeconds: 10
                   timeoutSeconds: 5
