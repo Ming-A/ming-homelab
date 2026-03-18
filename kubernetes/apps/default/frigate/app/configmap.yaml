@@ -17,53 +17,77 @@ data:
         type: edgetpu
         device: usb
 
+    go2rtc:
+      streams:
+        carport-front:
+          - "{FRIGATE_RTSP_CARPORT_FRONT}"
+        garden:
+          - "{FRIGATE_RTSP_GARDEN}"
+        left:
+          - "{FRIGATE_RTSP_LEFT}"
+        right:
+          - "{FRIGATE_RTSP_RIGHT}"
+        back:
+          - "{FRIGATE_RTSP_BACK}"
+        foyer:
+          - "{FRIGATE_RTSP_FOYER}"
+        kitchen:
+          - "{FRIGATE_RTSP_KITCHEN}"
+
     cameras:
       carport-front:
         ffmpeg:
           inputs:
-            - path: "{FRIGATE_RTSP_CARPORT_FRONT}"
+            - path: rtsp://127.0.0.1:8554/carport-front
+              input_args: preset-rtsp-restream
               roles:
                 - detect
                 - record
       garden:
         ffmpeg:
           inputs:
-            - path: "{FRIGATE_RTSP_GARDEN}"
+            - path: rtsp://127.0.0.1:8554/garden
+              input_args: preset-rtsp-restream
               roles:
                 - detect
                 - record
       left:
         ffmpeg:
           inputs:
-            - path: "{FRIGATE_RTSP_LEFT}"
+            - path: rtsp://127.0.0.1:8554/left
+              input_args: preset-rtsp-restream
               roles:
                 - detect
                 - record
       right:
         ffmpeg:
           inputs:
-            - path: "{FRIGATE_RTSP_RIGHT}"
+            - path: rtsp://127.0.0.1:8554/right
+              input_args: preset-rtsp-restream
               roles:
                 - detect
                 - record
       back:
         ffmpeg:
           inputs:
-            - path: "{FRIGATE_RTSP_BACK}"
+            - path: rtsp://127.0.0.1:8554/back
+              input_args: preset-rtsp-restream
               roles:
                 - detect
                 - record
       foyer:
         ffmpeg:
           inputs:
-            - path: "{FRIGATE_RTSP_FOYER}"
+            - path: rtsp://127.0.0.1:8554/foyer
+              input_args: preset-rtsp-restream
               roles:
                 - detect
                 - record
       kitchen:
         ffmpeg:
           inputs:
-            - path: "{FRIGATE_RTSP_KITCHEN}"
+            - path: rtsp://127.0.0.1:8554/kitchen
+              input_args: preset-rtsp-restream
               roles:
                 - detect
                 - record
