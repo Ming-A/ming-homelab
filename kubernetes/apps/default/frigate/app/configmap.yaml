@@ -43,6 +43,10 @@ data:
               roles:
                 - detect
                 - record
+        detect:
+          width: 1280
+          height: 720
+          fps: 5
       garden:
         ffmpeg:
           inputs:
@@ -51,6 +55,10 @@ data:
               roles:
                 - detect
                 - record
+        detect:
+          width: 1280
+          height: 720
+          fps: 5
       left:
         ffmpeg:
           inputs:
@@ -59,6 +67,10 @@ data:
               roles:
                 - detect
                 - record
+        detect:
+          width: 1280
+          height: 720
+          fps: 5
       right:
         ffmpeg:
           inputs:
@@ -67,6 +79,10 @@ data:
               roles:
                 - detect
                 - record
+        detect:
+          width: 1280
+          height: 720
+          fps: 5
       back:
         ffmpeg:
           inputs:
@@ -75,6 +91,10 @@ data:
               roles:
                 - detect
                 - record
+        detect:
+          width: 1280
+          height: 720
+          fps: 5
       foyer:
         ffmpeg:
           inputs:
@@ -83,6 +103,10 @@ data:
               roles:
                 - detect
                 - record
+        detect:
+          width: 1280
+          height: 720
+          fps: 5
       kitchen:
         ffmpeg:
           inputs:
@@ -91,6 +115,10 @@ data:
               roles:
                 - detect
                 - record
+        detect:
+          width: 1280
+          height: 720
+          fps: 5
 
     record:
       enabled: true
