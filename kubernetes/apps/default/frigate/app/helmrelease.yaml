@@ -44,7 +44,7 @@ spec:
                 cpu: 500m
                 memory: 1Gi
               limits:
-                memory: 6Gi
+                memory: 8Gi
     defaultPodOptions:
       nodeSelector:
         kubernetes.io/hostname: lilith-talos-master-3
@@ -86,6 +86,6 @@ spec:
       shm:
         type: emptyDir
         medium: Memory
-        sizeLimit: 1Gi
+        sizeLimit: 2Gi
         globalMounts:
           - path: /dev/shm
