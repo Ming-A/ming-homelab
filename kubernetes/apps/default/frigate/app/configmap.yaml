@@ -122,6 +122,9 @@ data:
 
     record:
       enabled: true
+      retain:
+        days: 9
+        mode: all
 
     snapshots:
       enabled: true
