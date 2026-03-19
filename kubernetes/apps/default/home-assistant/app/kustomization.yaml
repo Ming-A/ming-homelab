@@ -7,3 +7,4 @@ resources:
   - httproute.yaml
   - httproute-external.yaml
   - backendtlspolicy.yaml
+  - ca-configmap.yaml

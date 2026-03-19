@@ -10,5 +10,8 @@ spec:
       name: home-assistant
       sectionName: https
   validation:
-    wellKnownCACertificates: System
+    caCertificateRefs:
+      - name: home-assistant-backend-ca
+        group: ""
+        kind: ConfigMap
     hostname: homeassistant.mingsoonang.com
