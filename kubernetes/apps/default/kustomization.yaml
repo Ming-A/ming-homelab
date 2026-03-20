@@ -16,4 +16,5 @@ resources:
   - ./home-assistant/ks.yaml
   - ./frigate/ks.yaml
   - ./qbittorrent/ks.yaml
+  - ./radarr/ks.yaml
 
