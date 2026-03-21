@@ -18,4 +18,5 @@ resources:
   - ./qbittorrent/ks.yaml
   - ./radarr/ks.yaml
   - ./jellyfin/ks.yaml
+  - ./seerr/ks.yaml
 
