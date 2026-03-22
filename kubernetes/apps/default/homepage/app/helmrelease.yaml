@@ -20,10 +20,13 @@ spec:
           app:
             image:
               repository: ghcr.io/gethomepage/homepage
-              tag: v1.4.5@sha256:ed5a96c7fd02280469bbb852e1f413fffe6c6dda028e90ae3221baa55deb7261
+              tag: v1.11.0@sha256:b129cb0f674bd6d204e215bde2c2fc3f11d6ad0e82f6d20007cf80f74e1acbb1
             env:
               TZ: Asia/Kuala_Lumpur
               HOMEPAGE_ALLOWED_HOSTS: homepage.mingsoonang.com
+            envFrom:
+              - secretRef:
+                  name: homepage-secret
             probes:
               liveness: &probes
                 enabled: true
