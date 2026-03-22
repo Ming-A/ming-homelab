@@ -29,7 +29,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /api/v1/settings
+                    path: /
                     port: &port 4567
                   initialDelaySeconds: 60
                   periodSeconds: 15
