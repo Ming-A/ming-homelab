@@ -1,0 +1,77 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: suwayomi
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: suwayomi
+  interval: 1h
+  values:
+    controllers:
+      suwayomi:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/suwayomi/suwayomi-server
+              tag: v2.1.1999@sha256:308dfc6d0facf9ae6316b7e18c3d7a8b43316b292e280d69f7a5e276d5a34f71
+            env:
+              TZ: Asia/Kuala_Lumpur
+              # Download chapters to NFS so Kavita can read them
+              DOWNLOAD_AS_DEFAULT: "true"
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/v1/settings
+                    port: &port 4567
+                  initialDelaySeconds: 60
+                  periodSeconds: 15
+                  timeoutSeconds: 5
+                  failureThreshold: 3
+              readiness: *probes
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: false
+              capabilities: {drop: ["ALL"]}
+            resources:
+              requests:
+                cpu: 100m
+              limits:
+                memory: 2Gi
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+    service:
+      app:
+        ports:
+          http:
+            port: *port
+    route:
+      app:
+        hostnames:
+          - "{{ .Release.Name }}.mingsoonang.com"
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
+    persistence:
+      config:
+        existingClaim: "{{ .Release.Name }}"
+        globalMounts:
+          - path: /home/suwayomi/.local/share/Tachidesk
+      manga:
+        type: nfs
+        server: 10.69.15.3
+        path: /volume1/media-storage/media
+        globalMounts:
+          - path: /manga
