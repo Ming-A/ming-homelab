@@ -20,4 +20,5 @@ resources:
   - ./jellyfin/ks.yaml
   - ./seerr/ks.yaml
   - ./prowlarr/ks.yaml
+  - ./byparr/ks.yaml
 
