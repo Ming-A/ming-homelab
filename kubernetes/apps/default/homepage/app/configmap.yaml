@@ -27,7 +27,7 @@ data:
       Infrastructure:
         icon: mdi-server
         style: row
-        columns: 4
+        columns: 6
 
   widgets.yaml: |
     - kubernetes:
@@ -102,6 +102,24 @@ data:
             siteMonitor: https://frigate.mingsoonang.com/api/version
 
     - Infrastructure:
+        - Synology:
+            icon: synology.png
+            href: "{{HOMEPAGE_VAR_SYNOLOGY_URL}}"
+            description: NAS storage
+            widget:
+              type: diskstation
+              url: "{{HOMEPAGE_VAR_SYNOLOGY_URL}}"
+              username: "{{HOMEPAGE_VAR_SYNOLOGY_USERNAME}}"
+              password: "{{HOMEPAGE_VAR_SYNOLOGY_PASSWORD}}"
+              volume: volume_1
+        - Speedtest:
+            icon: speedtest-tracker.png
+            href: https://speedtest.mingsoonang.com
+            description: Internet speed tests
+            widget:
+              type: speedtest
+              url: "{{HOMEPAGE_VAR_SPEEDTEST_URL}}"
+              bitratePrecision: 2
         - Grafana:
             icon: grafana.png
             href: https://grafana.mingsoonang.com
@@ -128,9 +146,6 @@ data:
         - GitHub Repo:
             - icon: github.png
               href: https://github.com/Ming-A/ming-homelab
-        - Talos Dashboard:
-            - icon: mdi-kubernetes
-              href: https://talos.local:6443
 
   kubernetes.yaml: |
     mode: cluster

@@ -1,0 +1,65 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: speedtest-tracker
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: speedtest-tracker
+  interval: 1h
+  values:
+    controllers:
+      speedtest-tracker:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: lscr.io/linuxserver/speedtest-tracker
+              tag: latest
+            env:
+              TZ: Asia/Kuala_Lumpur
+              PUID: "1000"
+              PGID: "1000"
+              APP_KEY: base64:SXogz3YGFtCaF3FsIOEhneTuytUzjuuxXxZOQOa1gwA=
+              DB_CONNECTION: sqlite
+              SPEEDTEST_SCHEDULE: "0 */6 * * *"
+            envFrom:
+              - secretRef:
+                  name: speedtest-tracker-secret
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  tcpSocket:
+                    port: &port 80
+                  initialDelaySeconds: 60
+                  periodSeconds: 10
+                  timeoutSeconds: 5
+                  failureThreshold: 3
+              readiness: *probes
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 256Mi
+    service:
+      app:
+        ports:
+          http:
+            port: *port
+    route:
+      app:
+        hostnames:
+          - "speedtest.mingsoonang.com"
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
+    persistence:
+      config:
+        type: emptyDir
+        globalMounts:
+          - path: /config
