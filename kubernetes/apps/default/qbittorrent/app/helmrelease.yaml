@@ -54,6 +54,15 @@ spec:
         ports:
           http:
             port: *port
+      bittorrent:
+        type: LoadBalancer
+        ports:
+          bittorrent-tcp:
+            port: 6881
+            protocol: TCP
+          bittorrent-udp:
+            port: 6881
+            protocol: UDP
     route:
       app:
         hostnames:
