@@ -21,6 +21,4 @@ resources:
   - ./seerr/ks.yaml
   - ./prowlarr/ks.yaml
   - ./byparr/ks.yaml
-  - ./kavita/ks.yaml
-  - ./suwayomi/ks.yaml
 
