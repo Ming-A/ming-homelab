@@ -21,4 +21,5 @@ resources:
   - ./seerr/ks.yaml
   - ./prowlarr/ks.yaml
   - ./byparr/ks.yaml
+  - ./homepage/ks.yaml
 
