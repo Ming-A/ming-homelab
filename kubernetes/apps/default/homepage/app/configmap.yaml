@@ -1,0 +1,137 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-config
+  namespace: default
+data:
+  settings.yaml: |
+    title: Ming's Homelab
+    favicon: https://kubernetes.io/images/favicon.png
+    theme: dark
+    color: slate
+    headerStyle: clean
+    layout:
+      Media:
+        icon: mdi-play-circle
+        style: row
+        columns: 4
+      Downloads:
+        icon: mdi-download
+        style: row
+        columns: 3
+      Smart Home:
+        icon: mdi-home-automation
+        style: row
+        columns: 2
+      Infrastructure:
+        icon: mdi-server
+        style: row
+        columns: 4
+
+  widgets.yaml: |
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+          label: "ming-homelab"
+        nodes:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+    - datetime:
+        text_size: xl
+        format:
+          dateStyle: long
+          timeStyle: short
+          hour12: true
+
+  services.yaml: |
+    - Media:
+        - Jellyfin:
+            icon: jellyfin.png
+            href: https://jellyfin.mingsoonang.com
+            description: Media server
+            siteMonitor: https://jellyfin.mingsoonang.com/health
+        - Sonarr:
+            icon: sonarr.png
+            href: https://sonarr.mingsoonang.com
+            description: TV show automation
+            siteMonitor: https://sonarr.mingsoonang.com/ping
+        - Radarr:
+            icon: radarr.png
+            href: https://radarr.mingsoonang.com
+            description: Movie automation
+            siteMonitor: https://radarr.mingsoonang.com/ping
+        - Seerr:
+            icon: overseerr.png
+            href: https://seerr.mingsoonang.com
+            description: Media requests
+            siteMonitor: https://seerr.mingsoonang.com/api/v1/status
+
+    - Downloads:
+        - qBittorrent:
+            icon: qbittorrent.png
+            href: https://qbittorrent.mingsoonang.com
+            description: Torrent client
+            siteMonitor: https://qbittorrent.mingsoonang.com
+        - Prowlarr:
+            icon: prowlarr.png
+            href: https://prowlarr.mingsoonang.com
+            description: Indexer manager
+            siteMonitor: https://prowlarr.mingsoonang.com/ping
+        - Byparr:
+            icon: mdi-shield-check
+            href: https://byparr.mingsoonang.com
+            description: Cloudflare bypass proxy
+            siteMonitor: https://byparr.mingsoonang.com
+
+    - Smart Home:
+        - Home Assistant:
+            icon: home-assistant.png
+            href: https://homeassistant.mingsoonang.com
+            description: Home automation
+            siteMonitor: https://homeassistant.mingsoonang.com/api/
+        - Frigate:
+            icon: frigate.png
+            href: https://frigate.mingsoonang.com
+            description: NVR — 7 cameras
+            siteMonitor: https://frigate.mingsoonang.com/api/version
+
+    - Infrastructure:
+        - Grafana:
+            icon: grafana.png
+            href: https://grafana.mingsoonang.com
+            description: Dashboards & monitoring
+            siteMonitor: https://grafana.mingsoonang.com/api/health
+        - Prometheus:
+            icon: prometheus.png
+            href: https://prometheus.mingsoonang.com
+            description: Metrics
+            siteMonitor: https://prometheus.mingsoonang.com/-/healthy
+        - Rook Ceph:
+            icon: ceph.png
+            href: https://rook.mingsoonang.com
+            description: Distributed storage
+            siteMonitor: https://rook.mingsoonang.com
+        - Kopia:
+            icon: mdi-backup-restore
+            href: https://kopia.mingsoonang.com
+            description: Backup repository
+            siteMonitor: https://kopia.mingsoonang.com
+
+  bookmarks.yaml: |
+    - Quick Links:
+        - GitHub Repo:
+            - icon: github.png
+              href: https://github.com/Ming-A/ming-homelab
+        - Talos Dashboard:
+            - icon: mdi-kubernetes
+              href: https://talos.local:6443
+
+  kubernetes.yaml: |
+    mode: cluster
+
