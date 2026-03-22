@@ -65,6 +65,7 @@ spec:
             protocol: UDP
     route:
       app:
+        targetService: app
         hostnames:
           - "{{ .Release.Name }}.mingsoonang.com"
         parentRefs:
