@@ -46,13 +46,16 @@ spec:
               requests:
                 cpu: 100m
                 memory: 1Gi
+                gpu.intel.com/i915: "1"
               limits:
                 cpu: 4000m
                 memory: 8Gi
+                gpu.intel.com/i915: "1"
     defaultPodOptions:
       securityContext:
         fsGroup: 568
         fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups: [44, 104]
     service:
       app:
         ports:
