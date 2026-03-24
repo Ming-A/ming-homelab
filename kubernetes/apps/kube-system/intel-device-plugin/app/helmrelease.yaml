@@ -13,5 +13,4 @@ spec:
         name: intel
   interval: 1h
   values:
-    nodeFeatureRule:
-      enable: true
+    nodeFeatureRule: true
