@@ -24,6 +24,10 @@ data:
         icon: mdi-home-automation
         style: row
         columns: 2
+      Network:
+        icon: mdi-router-network
+        style: row
+        columns: 2
       Infrastructure:
         icon: mdi-server
         style: row
@@ -60,12 +64,18 @@ data:
             icon: sonarr.png
             href: https://sonarr.mingsoonang.com
             description: TV show automation
-            siteMonitor: https://sonarr.mingsoonang.com/ping
+            widget:
+              type: sonarr
+              url: http://sonarr.default.svc.cluster.local
+              key: "{{HOMEPAGE_VAR_SONARR_KEY}}"
         - Radarr:
             icon: radarr.png
             href: https://radarr.mingsoonang.com
             description: Movie automation
-            siteMonitor: https://radarr.mingsoonang.com/ping
+            widget:
+              type: radarr
+              url: http://radarr.default.svc.cluster.local:80
+              key: "{{HOMEPAGE_VAR_RADARR_KEY}}"
         - Seerr:
             icon: overseerr.png
             href: https://seerr.mingsoonang.com
@@ -77,12 +87,19 @@ data:
             icon: qbittorrent.png
             href: https://qbittorrent.mingsoonang.com
             description: Torrent client
-            siteMonitor: https://qbittorrent.mingsoonang.com
+            widget:
+              type: qbittorrent
+              url: http://qbittorrent-app.default.svc.cluster.local:8080
+              username: "{{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}"
+              password: "{{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}"
         - Prowlarr:
             icon: prowlarr.png
             href: https://prowlarr.mingsoonang.com
             description: Indexer manager
-            siteMonitor: https://prowlarr.mingsoonang.com/ping
+            widget:
+              type: prowlarr
+              url: http://prowlarr.default.svc.cluster.local:9696
+              key: "{{HOMEPAGE_VAR_PROWLARR_KEY}}"
         - Byparr:
             icon: mdi-shield-check
             href: https://byparr.mingsoonang.com
@@ -100,6 +117,26 @@ data:
             href: https://frigate.mingsoonang.com
             description: NVR — 7 cameras
             siteMonitor: https://frigate.mingsoonang.com/api/version
+
+    - Network:
+        - Pi-hole:
+            icon: pi-hole.png
+            href: "{{HOMEPAGE_VAR_PIHOLE_URL}}"
+            description: DNS ad blocker
+            widget:
+              type: pihole
+              url: "{{HOMEPAGE_VAR_PIHOLE_URL}}"
+              version: 6
+              key: "{{HOMEPAGE_VAR_PIHOLE_KEY}}"
+        - Unifi:
+            icon: unifi.png
+            href: "{{HOMEPAGE_VAR_UNIFI_URL}}"
+            description: Network controller
+            widget:
+              type: unifi
+              url: "{{HOMEPAGE_VAR_UNIFI_URL}}"
+              username: "{{HOMEPAGE_VAR_UNIFI_USERNAME}}"
+              password: "{{HOMEPAGE_VAR_UNIFI_PASSWORD}}"
 
     - Infrastructure:
         - Synology:
