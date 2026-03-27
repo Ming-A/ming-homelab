@@ -23,4 +23,5 @@ resources:
   - ./byparr/ks.yaml
   - ./homepage/ks.yaml
   - ./speedtest-tracker/ks.yaml
+  - ./decluttarr/ks.yaml
 
