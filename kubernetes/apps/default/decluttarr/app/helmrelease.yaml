@@ -51,3 +51,7 @@ spec:
               - path: /app/config/config.yaml
                 subPath: config.yaml
                 readOnly: true
+      logs:
+        type: emptyDir
+        globalMounts:
+          - path: /app/logs
