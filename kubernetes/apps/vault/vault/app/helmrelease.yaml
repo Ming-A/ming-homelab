@@ -1,0 +1,26 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: vault
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: vault
+  interval: 1h
+  values:
+    server:
+      ha:
+        enabled: true
+        replicas: 3
+        raft:
+          enabled: true
+      dataStorage:
+        enabled: true
+        size: 1Gi
+        storageClass: ceph-block
+    ui:
+      enabled: true
+    injector:
+      enabled: false
