@@ -9,4 +9,4 @@ components:
 resources:
   - ./namespace.yaml
   - ./external-secrets/ks.yaml
-
+  - ./external-secrets/cluster-secret-store/ks.yaml
