@@ -1,0 +1,78 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: immich
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: immich
+  interval: 1h
+  valuesFrom:
+    - kind: Secret
+      name: immich-secret
+      valuesKey: DB_PASSWORD
+      targetPath: postgresql.global.postgresql.auth.password
+  values:
+    env:
+      TZ: Asia/Kuala_Lumpur
+
+    immich:
+      persistence:
+        library:
+          existingClaim: immich-library
+
+    server:
+      enabled: true
+      extraVolumes:
+        - name: archive
+          persistentVolumeClaim:
+            claimName: immich-archive
+            readOnly: true
+      extraVolumeMounts:
+        - name: archive
+          mountPath: /mnt/archive_media
+          readOnly: true
+      route:
+        enabled: true
+        hostnames:
+          - "immich.mingsoonang.com"
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
+            sectionName: https
+
+    machine-learning:
+      enabled: true
+      persistence:
+        cache:
+          enabled: true
+          size: 10Gi
+          storageClass: ceph-block
+
+    postgresql:
+      enabled: true
+      image:
+        repository: ghcr.io/immich-app/postgres
+        tag: "14-vectorchord0.3.0-pgvectors0.2.0"
+      primary:
+        persistence:
+          enabled: true
+          storageClass: ceph-block
+          size: 20Gi
+      global:
+        postgresql:
+          auth:
+            username: immich
+            database: immich
+            # password injected via valuesFrom
+
+    redis:
+      enabled: true
+      architecture: standalone
+      auth:
+        enabled: false
+      master:
+        persistence:
+          enabled: false
