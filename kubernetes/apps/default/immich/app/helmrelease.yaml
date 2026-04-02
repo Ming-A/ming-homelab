@@ -9,39 +9,49 @@ spec:
     kind: OCIRepository
     name: immich
   interval: 1h
-  valuesFrom:
-    - kind: Secret
-      name: immich-secret
-      valuesKey: DB_PASSWORD
-      targetPath: postgresql.global.postgresql.auth.password
+  dependsOn:
+    - name: immich-postgres
   values:
-    env:
-      TZ: Asia/Kuala_Lumpur
+    # Top-level controllers = server component (shared env vars)
+    controllers:
+      main:
+        containers:
+          main:
+            env:
+              TZ: Asia/Kuala_Lumpur
+              DB_HOSTNAME: immich-postgres
+              DB_PORT: "${DB_PORT}"
+              DB_USERNAME: "${DB_USERNAME}"
+              DB_DATABASE_NAME: "${DB_DATABASE_NAME}"
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-secret
+                    key: DB_PASSWORD
 
     immich:
       persistence:
         library:
           existingClaim: immich-library
 
+    # Archive external library mount (on the server pod)
+    persistence:
+      archive:
+        existingClaim: immich-archive
+        globalMounts:
+          - path: /mnt/archive_media
+            readOnly: true
+
+    # Enable built-in valkey (Redis-compatible cache)
+    # REDIS_HOSTNAME defaults to "immich-valkey" matching this service
+    valkey:
+      enabled: true
+      persistence:
+        data:
+          type: emptyDir
+
     server:
       enabled: true
-      extraVolumes:
-        - name: archive
-          persistentVolumeClaim:
-            claimName: immich-archive
-            readOnly: true
-      extraVolumeMounts:
-        - name: archive
-          mountPath: /mnt/archive_media
-          readOnly: true
-      route:
-        enabled: true
-        hostnames:
-          - "immich.mingsoonang.com"
-        parentRefs:
-          - name: envoy-internal
-            namespace: network
-            sectionName: https
 
     machine-learning:
       enabled: true
@@ -50,29 +60,3 @@ spec:
           enabled: true
           size: 10Gi
           storageClass: ceph-block
-
-    postgresql:
-      enabled: true
-      image:
-        repository: ghcr.io/immich-app/postgres
-        tag: "14-vectorchord0.3.0-pgvectors0.2.0"
-      primary:
-        persistence:
-          enabled: true
-          storageClass: ceph-block
-          size: 20Gi
-      global:
-        postgresql:
-          auth:
-            username: immich
-            database: immich
-            # password injected via valuesFrom
-
-    redis:
-      enabled: true
-      architecture: standalone
-      auth:
-        enabled: false
-      master:
-        persistence:
-          enabled: false

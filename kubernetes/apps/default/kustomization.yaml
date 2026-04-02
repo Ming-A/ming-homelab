@@ -24,5 +24,6 @@ resources:
   - ./homepage/ks.yaml
   - ./speedtest-tracker/ks.yaml
   - ./decluttarr/ks.yaml
+  - ./immich/secret/ks.yaml
   - ./immich/ks.yaml
 

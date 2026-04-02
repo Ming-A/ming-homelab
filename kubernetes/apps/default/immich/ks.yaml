@@ -8,8 +8,7 @@ spec:
   dependsOn:
     - name: rook-ceph-cluster
       namespace: rook-ceph
-    - name: external-secrets-cluster-secret-store
-      namespace: external-secrets
+    - name: immich-secret
   interval: 1h
   path: ./kubernetes/apps/default/immich/app
   postBuild:
