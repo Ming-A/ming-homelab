@@ -85,3 +85,8 @@ spec:
     socketLB:
       enabled: true
       hostNamespaceOnly: true
+    # Taint node as not-ready until Cilium is fully initialized.
+    # Prevents CSI plugins and other DaemonSets from starting before Cilium's
+    # kube-proxy replacement is up, which would cause API server i/o timeouts.
+    taint:
+      enabled: true
