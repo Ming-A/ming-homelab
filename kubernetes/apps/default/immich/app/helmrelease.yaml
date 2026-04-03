@@ -52,19 +52,38 @@ spec:
 
     server:
       enabled: true
-      resources:
-        requests:
-          cpu: 500m
-        limits:
-          cpu: 5000m
+      controllers:
+        main:
+          containers:
+            main:
+              resources:
+                requests:
+                  cpu: 500m
+                limits:
+                  cpu: 2000m
+          pod:
+            affinity:
+              nodeAffinity:
+                preferredDuringSchedulingIgnoredDuringExecution:
+                  - weight: 100
+                    preference:
+                      matchExpressions:
+                        - key: kubernetes.io/hostname
+                          operator: NotIn
+                          values:
+                            - lilith-talos-master-3
 
     machine-learning:
       enabled: true
-      resources:
-        requests:
-          cpu: 200m
-        limits:
-          cpu: 3000m
+      controllers:
+        main:
+          containers:
+            main:
+              resources:
+                requests:
+                  cpu: 200m
+                limits:
+                  cpu: 1500m
       persistence:
         cache:
           enabled: true
