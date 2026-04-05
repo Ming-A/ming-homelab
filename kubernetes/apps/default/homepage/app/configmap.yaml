@@ -64,6 +64,7 @@ data:
             icon: sonarr.png
             href: https://sonarr.mingsoonang.com
             description: TV show automation
+            siteMonitor: https://sonarr.mingsoonang.com/ping
             widget:
               type: sonarr
               url: http://sonarr.default.svc.cluster.local
@@ -72,6 +73,7 @@ data:
             icon: radarr.png
             href: https://radarr.mingsoonang.com
             description: Movie automation
+            siteMonitor: https://radarr.mingsoonang.com/ping
             widget:
               type: radarr
               url: http://radarr.default.svc.cluster.local:80
@@ -97,6 +99,7 @@ data:
             icon: qbittorrent.png
             href: https://qbittorrent.mingsoonang.com
             description: Torrent client
+            siteMonitor: https://qbittorrent.mingsoonang.com
             widget:
               type: qbittorrent
               url: http://qbittorrent-app.default.svc.cluster.local:8080
@@ -106,6 +109,7 @@ data:
             icon: prowlarr.png
             href: https://prowlarr.mingsoonang.com
             description: Indexer manager
+            siteMonitor: https://prowlarr.mingsoonang.com/ping
             widget:
               type: prowlarr
               url: http://prowlarr.default.svc.cluster.local:9696
