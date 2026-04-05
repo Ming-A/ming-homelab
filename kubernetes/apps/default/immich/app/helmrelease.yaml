@@ -54,11 +54,13 @@ spec:
       enabled: true
       controllers:
         main:
+          replicas: 2
+          strategy: Recreate
           containers:
             main:
               resources:
                 requests:
-                  cpu: 500m
+                  cpu: 200m
                 limits:
                   cpu: 2500m
           pod:
@@ -72,6 +74,13 @@ spec:
                           operator: NotIn
                           values:
                             - lilith-talos-master-3
+              podAntiAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  - labelSelector:
+                      matchLabels:
+                        app.kubernetes.io/name: server
+                        app.kubernetes.io/instance: immich
+                    topologyKey: kubernetes.io/hostname
 
     machine-learning:
       enabled: true
