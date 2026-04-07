@@ -51,7 +51,7 @@ spec:
                 gpu.intel.com/i915: "1"
               limits:
                 cpu: 4000m
-                memory: 8Gi
+                memory: 20Gi
                 gpu.intel.com/i915: "1"
     defaultPodOptions:
       securityContext:
@@ -77,6 +77,7 @@ spec:
           - path: /config
       cache:
         type: emptyDir
+        medium: Memory
         globalMounts:
           - path: /cache
       media:
