@@ -6,3 +6,4 @@ resources:
   - ./kopiamaintenance.yaml
   - ./mutatingadmissionpolicy.yaml
   - ./externalsecret.yaml
+  - ./volsync-watchdog.yaml
