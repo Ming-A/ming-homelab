@@ -1,0 +1,22 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: authentik
+spec:
+  dependsOn:
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
+    - name: authentik-secret
+  interval: 1h
+  path: ./kubernetes/apps/default/authentik/authentik/app
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: authentik-secret
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: authentik
+  wait: false

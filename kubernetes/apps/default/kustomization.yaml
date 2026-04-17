@@ -26,4 +26,6 @@ resources:
   - ./decluttarr/ks.yaml
   - ./immich/secret/ks.yaml
   - ./immich/ks.yaml
+  - ./authentik/authentik/secret/ks.yaml
+  - ./authentik/authentik/ks.yaml
 
