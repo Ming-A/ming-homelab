@@ -7,6 +7,9 @@ spec:
     kind: OCIRepository
     name: authentik
   interval: 1h
+  dependsOn:
+    - name: authentik-postgres
+    - name: authentik-redis
   values:
     global:
       env:
@@ -21,7 +24,12 @@ spec:
 
     authentik:
       postgresql:
+        host: authentik-postgres
+        name: authentik
+        user: authentik
         password: "${AUTHENTIK_POSTGRESQL__PASSWORD}"
+      redis:
+        host: authentik-redis
 
     server:
       replicas: 1
@@ -50,31 +58,7 @@ spec:
           enabled: true
 
     postgresql:
-      enabled: true
-      auth:
-        password: "${AUTHENTIK_POSTGRESQL__PASSWORD}"
-      primary:
-        persistence:
-          enabled: true
-          size: 4Gi
-          storageClass: ceph-block
-        resources:
-          requests:
-            cpu: 50m
-            memory: 128Mi
-          limits:
-            cpu: 500m
+      enabled: false
 
     redis:
-      enabled: true
-      master:
-        persistence:
-          enabled: true
-          size: 1Gi
-          storageClass: ceph-block
-        resources:
-          requests:
-            cpu: 25m
-            memory: 64Mi
-          limits:
-            cpu: 250m
+      enabled: false

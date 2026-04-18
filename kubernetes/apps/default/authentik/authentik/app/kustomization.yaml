@@ -3,6 +3,10 @@ kind: Kustomization
 resources:
   - ../../namespace.yaml
   - ./ocirepository.yaml
+  - ./ocirepository-postgres.yaml
+  - ./ocirepository-redis.yaml
+  - ./helmrelease-postgres.yaml
+  - ./helmrelease-redis.yaml
   - ./helmrelease.yaml
   - ./httproute.yaml
   - ./httproute-external.yaml
