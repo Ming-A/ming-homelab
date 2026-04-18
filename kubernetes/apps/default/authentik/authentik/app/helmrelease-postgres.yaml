@@ -1,0 +1,57 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authentik-postgres
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: authentik-postgres
+  interval: 1h
+  values:
+    controllers:
+      postgres:
+        type: statefulset
+        containers:
+          app:
+            image:
+              repository: docker.io/postgres
+              tag: "16-alpine"
+            env:
+              POSTGRES_DB: authentik
+              POSTGRES_USER: authentik
+              PGDATA: /var/lib/postgresql/data/pgdata
+              POSTGRES_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: authentik-secret
+                    key: AUTHENTIK_POSTGRESQL__PASSWORD
+            probes:
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  exec:
+                    command: ["pg_isready", "-U", "authentik", "-d", "authentik"]
+                  initialDelaySeconds: 15
+                  periodSeconds: 10
+            resources:
+              requests:
+                cpu: 50m
+                memory: 128Mi
+              limits:
+                cpu: 500m
+    service:
+      app:
+        ports:
+          postgres:
+            port: 5432
+    persistence:
+      data:
+        type: persistentVolumeClaim
+        storageClass: ceph-block
+        size: 4Gi
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /var/lib/postgresql/data

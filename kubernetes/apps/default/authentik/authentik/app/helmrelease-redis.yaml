@@ -1,0 +1,40 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authentik-redis
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: authentik-redis
+  interval: 1h
+  values:
+    controllers:
+      redis:
+        containers:
+          app:
+            image:
+              repository: docker.io/redis
+              tag: "7-alpine"
+            args: ["--save", ""]
+            probes:
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  exec:
+                    command: ["redis-cli", "ping"]
+                  initialDelaySeconds: 5
+                  periodSeconds: 10
+            resources:
+              requests:
+                cpu: 25m
+                memory: 64Mi
+              limits:
+                cpu: 250m
+    service:
+      app:
+        ports:
+          redis:
+            port: 6379
