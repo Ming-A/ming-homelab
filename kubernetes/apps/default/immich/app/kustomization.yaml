@@ -11,4 +11,5 @@ resources:
   - ./pv-archive.yaml
   - ./pvc-archive.yaml
   - ./httproute.yaml
+  - ./httproute-external.yaml
   - ./helmrelease.yaml
