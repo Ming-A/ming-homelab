@@ -65,6 +65,11 @@ spec:
         connections:
           requireMsgr2: true
       resources:
+        mgr:
+          requests:
+            memory: 512Mi
+          limits:
+            memory: 2Gi
         osd:
           requests:
             memory: 2Gi
