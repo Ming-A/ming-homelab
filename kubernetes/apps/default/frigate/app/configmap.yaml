@@ -17,6 +17,15 @@ data:
         type: edgetpu
         device: usb
 
+    lpr:
+      enabled: true
+      device: CPU
+      model_size: small
+      min_area: 500
+      detection_threshold: 0.5
+      recognition_threshold: 0.8
+      min_plate_length: 4
+
     go2rtc:
       ffmpeg:
         bin: /usr/lib/ffmpeg/7.0/bin/ffmpeg
@@ -52,6 +61,30 @@ data:
           width: 1280
           height: 720
           fps: 5
+          max_disappeared: 50
+          stationary:
+            interval: 50
+            threshold: 50
+        objects:
+          track:
+            - car
+            - motorcycle
+            - person
+          filters:
+            car:
+              min_score: 0.6
+              threshold: 0.7
+            motorcycle:
+              min_score: 0.4
+              threshold: 0.55
+        zones:
+          porch_entry:
+            coordinates: 0.40,0.13, 0.82,0.15, 0.84,0.40, 0.40,0.36
+            loitering_time: 0
+            inertia: 3
+            objects:
+              - car
+              - motorcycle
       garden:
         ffmpeg:
           inputs:
