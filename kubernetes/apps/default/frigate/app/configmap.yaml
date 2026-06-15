@@ -27,8 +27,6 @@ data:
       min_plate_length: 4
 
     go2rtc:
-      ffmpeg:
-        bin: /usr/lib/ffmpeg/7.0/bin/ffmpeg
       streams:
         carport-front:
           - "{FRIGATE_RTSP_CARPORT_FRONT}"
@@ -160,9 +158,8 @@ data:
 
     record:
       enabled: true
-      retain:
+      continuous:
         days: 9
-        mode: all
 
     snapshots:
       enabled: true
