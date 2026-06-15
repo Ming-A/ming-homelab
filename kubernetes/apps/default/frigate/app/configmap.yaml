@@ -24,7 +24,8 @@ data:
       min_area: 500
       detection_threshold: 0.5
       recognition_threshold: 0.8
-      min_plate_length: 4
+      min_plate_length: 2
+      format: "^[A-Z]{1,3} ?[0-9]{1,4} ?[A-Z]{0,2}$"
 
     go2rtc:
       streams:
@@ -48,6 +49,8 @@ data:
 
     cameras:
       carport-front:
+        lpr:
+          enabled: true
         ffmpeg:
           inputs:
             - path: rtsp://127.0.0.1:8554/carport-front
@@ -63,6 +66,9 @@ data:
           stationary:
             interval: 50
             threshold: 50
+        motion:
+          threshold: 22
+          contour_area: 8
         objects:
           track:
             - car
@@ -70,8 +76,8 @@ data:
             - person
           filters:
             car:
-              min_score: 0.6
-              threshold: 0.7
+              min_score: 0.5
+              threshold: 0.5
             motorcycle:
               min_score: 0.4
               threshold: 0.55
