@@ -90,6 +90,9 @@ data:
             motorcycle:
               min_score: 0.4
               threshold: 0.55
+            person:
+              min_score: 0.5
+              threshold: 0.6
         zones:
           porch_entry:
             coordinates: 0.42,0.30, 0.86,0.32, 0.88,0.80, 0.40,0.78
@@ -98,6 +101,7 @@ data:
             objects:
               - car
               - motorcycle
+              - person
       garden:
         ffmpeg:
           inputs:
