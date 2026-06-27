@@ -44,6 +44,8 @@ data:
           - "{FRIGATE_RTSP_FOYER}"
         kitchen:
           - "{FRIGATE_RTSP_KITCHEN}"
+        doorbell:
+          - "{FRIGATE_RTSP_DOORBELL}"
 
     ffmpeg:
       hwaccel_args: []
@@ -174,6 +176,54 @@ data:
           width: 1280
           height: 720
           fps: 5
+      doorbell:
+        lpr:
+          enabled: true
+        ffmpeg:
+          inputs:
+            - path: rtsp://127.0.0.1:8554/doorbell
+              input_args: preset-rtsp-restream
+              roles:
+                - detect
+                - record
+        detect:
+          width: 2560
+          height: 1920
+          fps: 5
+        objects:
+          track:
+            - cat
+            - dog
+            - car
+            - motorcycle
+            - person
+          filters:
+            car:
+              min_score: 0.6
+              threshold: 0.7
+            motorcycle:
+              min_score: 0.4
+              threshold: 0.55
+            person:
+              min_score: 0.5
+              threshold: 0.6
+            cat:
+              min_score: 0.5
+              threshold: 0.7
+              min_area: 100
+              max_area: 45000
+            dog:
+              min_score: 0.5
+              threshold: 0.7
+              min_area: 100
+              max_area: 45000
+        zones:
+          gate_approach:
+            coordinates: 0.20,0.60, 0.85,0.60, 0.92,1.0, 0.10,1.0
+            loitering_time: 0
+            inertia: 3
+            objects:
+              - person
 
     record:
       enabled: true
