@@ -54,12 +54,16 @@ data:
     objects:
       track:
         - cat
+        - person
       filters:
         cat:
           min_score: 0.5
           threshold: 0.7
           min_area: 100
           max_area: 45000
+        person:
+          min_score: 0.5
+          threshold: 0.7
 
     cameras:
       carport-front:
@@ -153,6 +157,12 @@ data:
           width: 1280
           height: 720
           fps: 5
+        objects:
+          filters:
+            person:
+              min_area: 1500
+              mask:
+                - 0.08,0.08,0.22,0.08,0.22,0.44,0.08,0.44
       foyer:
         ffmpeg:
           inputs:
