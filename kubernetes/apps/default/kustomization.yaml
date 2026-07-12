@@ -17,6 +17,7 @@ resources:
   - ./frigate/ks.yaml
   - ./qbittorrent/ks.yaml
   - ./radarr/ks.yaml
+  - ./bazarr/ks.yaml
   - ./jellyfin/ks.yaml
   - ./seerr/ks.yaml
   - ./prowlarr/ks.yaml
