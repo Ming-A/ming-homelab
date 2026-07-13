@@ -75,7 +75,7 @@ spec:
       media:
         type: nfs
         server: 10.69.15.3
-        path: /volume1/CCTV/frigate
+        path: /volume2/CCTV/frigate
         globalMounts:
           - path: /media/frigate
       usb:

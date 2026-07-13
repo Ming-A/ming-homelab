@@ -86,7 +86,7 @@ spec:
       media:
         type: nfs
         server: 10.69.15.3
-        path: /volume1/media-storage
+        path: /volume2/media-storage
         globalMounts:
           - path: /media
       tmp:

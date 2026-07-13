@@ -95,7 +95,7 @@ spec:
       repository:
         type: nfs
         server: 10.69.15.3
-        path: /volume1/kubernetes-storage/VolsyncKopia
+        path: /volume2/kubernetes-storage/VolsyncKopia
         globalMounts:
           - path: /repository
       tmpfs:
