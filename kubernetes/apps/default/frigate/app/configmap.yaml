@@ -220,8 +220,10 @@ data:
               threshold: 0.55
             person:
               min_score: 0.5
-              threshold: 0.6
+              threshold: 0.7
               min_area: 4000
+              mask:
+                - 0.70,0.36,0.82,0.36,0.82,0.53,0.70,0.53
             license_plate:
               mask:
                 - 0.0,0.40,0.19,0.40,0.19,0.82,0.0,0.82
