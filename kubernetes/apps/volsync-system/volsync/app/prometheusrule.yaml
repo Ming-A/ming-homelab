@@ -27,3 +27,23 @@ spec:
           for: 5m
           labels:
             severity: critical
+
+        - alert: VolSyncBackupsMissed
+          expr: |-
+            increase(volsync_missed_intervals_total[2h]) > 1
+          annotations:
+            summary: >-
+              {{ $labels.obj_namespace }}/{{ $labels.obj_name }} has missed scheduled backups (mover failing to run)
+          for: 30m
+          labels:
+            severity: critical
+
+        - alert: VolSyncRepositoryUnreachable
+          expr: |-
+            volsync_kopia_repository_connectivity == 0
+          annotations:
+            summary: >-
+              {{ $labels.obj_namespace }}/{{ $labels.obj_name }} cannot reach its kopia backup repository
+          for: 15m
+          labels:
+            severity: critical
