@@ -251,9 +251,9 @@ data:
     record:
       enabled: true
       continuous:
-        days: 9
+        days: 30
 
     snapshots:
       enabled: true
       retain:
-        default: 14
+        default: 30
