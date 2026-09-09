@@ -57,6 +57,9 @@ spec:
             single_node = true
             max_document_size = 50000000
 
+            [compactions]
+            _default = [{db_fragmentation, "70%"}, {view_fragmentation, "60%"}, {from, "15:00"}, {to, "20:00"}]
+
             [chttpd]
             require_valid_user = true
             bind_address = any
