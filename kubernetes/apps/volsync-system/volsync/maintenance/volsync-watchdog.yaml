@@ -37,6 +37,8 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: volsync-watchdog
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
   namespace: volsync-system
 spec:
   schedule: "45 * * * *"
