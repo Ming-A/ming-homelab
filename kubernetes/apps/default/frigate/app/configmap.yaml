@@ -51,6 +51,14 @@ data:
     ffmpeg:
       hwaccel_args: []
 
+    classification:
+      custom:
+        person_cat_check:
+          threshold: 0.8
+          object_config:
+            objects: [person]
+            classification_type: sub_label
+
     objects:
       track:
         - cat
